@@ -7,6 +7,7 @@ namespace IntegrationTests
     [SetUpFixture]
     public class SetUpFixture : CassiniDevServer
     {
+        internal const string BasePath = "http://localhost:8888/";
 
         [SetUp]
         protected virtual void TestFixtureSetUp()

@@ -6,7 +6,7 @@ namespace ServiceStackApp
     {
         public object Execute(Hello request)
         {
-            return new HelloResponse {Result = "Hello, " + request.Name};
+            return new HelloResponse {Result = "Hello, " + request.Name, Number = request.Number};
         }
     }
 }
