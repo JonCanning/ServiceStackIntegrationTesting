@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Net;
 using FluentAssertions;
 using NUnit.Framework;
@@ -51,6 +52,31 @@ namespace IntegrationTests
             var json = JsonSerializer.SerializeToString(new Hello { Name = "Demis", Number = 1 });
             var response = client.UploadString("hello?format=json", json);
             response.Should().Contain(@"""Number"":1");
+        }
+    }
+
+    [TestFixture]
+    class When_sending_an_invalid_hello
+    {
+        readonly JsonServiceClient jsonServiceClient = new JsonServiceClient(SetUpFixture.BasePath);
+
+        [Test]
+        public void Then_web_service_exception_should_be_thrown()
+        {
+            jsonServiceClient.Invoking(x => x.Get<HelloResponse>("hello")).ShouldThrow<WebServiceException>("Bad Request");
+        }
+
+        [Test]
+        public void Then_error_message_should_be_returned()
+        {
+            try
+            {
+                jsonServiceClient.Get<HelloResponse>("hello");
+            }
+            catch (WebServiceException exception)
+            {
+                exception.ResponseDto.As<HelloResponse>().Errors.First().Should().Be("Please provide a name");
+            }
         }
     }
 }

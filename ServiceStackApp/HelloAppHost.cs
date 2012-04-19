@@ -1,4 +1,6 @@
 using Funq;
+using ServiceStack.FluentValidation;
+using ServiceStack.ServiceInterface.Validation;
 using ServiceStack.WebHost.Endpoints;
 
 namespace ServiceStackApp
@@ -14,6 +16,16 @@ namespace ServiceStackApp
             Routes
                 .Add<Hello>("/hello")
                 .Add<Hello>("/hello/{Name}");
+            Plugins.Add(new ValidationFeature());
+            container.RegisterValidator(typeof(HelloValidator));
+        }
+    }
+
+    public class HelloValidator : AbstractValidator<Hello>
+    {
+        public HelloValidator()
+        {
+            RuleFor(x => x.Name).NotEmpty().WithMessage("Please provide a name");
         }
     }
 }
