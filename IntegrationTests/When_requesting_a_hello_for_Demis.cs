@@ -75,7 +75,7 @@ namespace IntegrationTests
             }
             catch (WebServiceException exception)
             {
-                exception.ResponseDto.As<HelloResponse>().Errors.First().Should().Be("Please provide a name");
+                exception.ResponseDto.As<HelloResponse>().ResponseStatus.Errors.First().Message.Should().Be("Please provide a name");
             }
         }
     }
