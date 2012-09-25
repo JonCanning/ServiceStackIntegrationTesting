@@ -1,10 +1,20 @@
-using ServiceStack.ServiceHost;
+using ServiceStack.ServiceInterface;
 
 namespace ServiceStackApp
 {
-    public class HelloService : IService<Hello>
+    public class HelloService : Service
     {
-        public object Execute(Hello request)
+        public object Post(Hello request)
+        {
+            return Execute(request);
+        }
+
+        public object Get(Hello request)
+        {
+            return Execute(request);
+        }
+
+        static object Execute(Hello request)
         {
             return new HelloResponse {Result = "Hello, " + request.Name, Number = request.Number};
         }

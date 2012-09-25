@@ -22,7 +22,8 @@ namespace IntegrationTests
         [Test]
         public void Then_json_should_contain_Hello_Demis()
         {
-            jsonServiceClient.Send<object>(new Hello { Name = "Demis" }).ToString().Should().Contain(@"{""Result"":""Hello, Demis""}");
+            var json = new WebClient().UploadString(SetUpFixture.BasePath + "hello/Demis?format=json", new Hello { Name = "Demis" }.ToJson());
+            json.Should().Contain(@"{""Result"":""Hello, Demis""}");
         }
     }
 
