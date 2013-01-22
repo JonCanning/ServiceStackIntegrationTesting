@@ -79,7 +79,11 @@
   <ItemGroup>
     <Compile Include="SetUpFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="When_requesting_a_hello_and_handshake_for_Demis.cs" />
     <Compile Include="When_requesting_a_hello_for_Demis.cs" />
+    <Compile Include="When_sending_an_invalid_hello.cs" />
+    <Compile Include="When_using_a_nullable_int_and_bad_json.cs" />
+    <Compile Include="When_using_a_nullable_int_and_valid_json.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
