@@ -16,7 +16,7 @@ namespace ServiceStackApp
 
         static object Execute(Hello request)
         {
-            return new HelloResponse {Result = "Hello, " + request.Name, Number = request.Number};
+            return new HelloResponse { Result = "Hello, " + request.Name, Number = request.Number, Status = request.Status };
         }
     }
 }

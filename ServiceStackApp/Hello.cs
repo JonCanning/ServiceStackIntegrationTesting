@@ -6,5 +6,6 @@ namespace ServiceStackApp
     {
         public string Name { get; set; }
         public int? Number { get; set; }
+        public Status Status { get; set; }
     }
 }

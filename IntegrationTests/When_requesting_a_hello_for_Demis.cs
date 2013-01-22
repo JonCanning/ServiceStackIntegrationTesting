@@ -1,10 +1,10 @@
-using System.Linq;
-using System.Net;
 using FluentAssertions;
 using NUnit.Framework;
 using ServiceStack.ServiceClient.Web;
 using ServiceStack.Text;
 using ServiceStackApp;
+using System.Linq;
+using System.Net;
 
 namespace IntegrationTests
 {
@@ -12,11 +12,24 @@ namespace IntegrationTests
     class When_requesting_a_hello_for_Demis
     {
         readonly JsonServiceClient jsonServiceClient = new JsonServiceClient(SetUpFixture.BasePath);
+        HelloResponse response;
+
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
+        {
+            response = jsonServiceClient.Get<HelloResponse>("hello/Demis");
+        }
 
         [Test]
         public void Then_result_should_be_Hello_Demis()
         {
-            jsonServiceClient.Get<HelloResponse>("hello/Demis").Result.Should().Be("Hello, Demis");
+            response.Result.Should().Be("Hello, Demis");
+        }
+
+        [Test]
+        public void Then_status_should_be_waving()
+        {
+            response.Status.Should().Be(Status.Waving);
         }
 
         [Test]
@@ -24,6 +37,25 @@ namespace IntegrationTests
         {
             var json = new WebClient().UploadString(SetUpFixture.BasePath + "hello/Demis?format=json", new Hello { Name = "Demis" }.ToJson());
             json.Should().Contain(@"{""Result"":""Hello, Demis""}");
+        }
+    }
+
+    [TestFixture]
+    class When_requesting_a_hello_and_handshake_for_Demis
+    {
+        readonly JsonServiceClient jsonServiceClient = new JsonServiceClient(SetUpFixture.BasePath);
+        HelloResponse response;
+
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
+        {
+            response = jsonServiceClient.Post<HelloResponse>("hello/Demis", new Hello{Status = Status.HandShake});
+        }
+
+        [Test]
+        public void Then_status_should_be_handshake()
+        {
+            response.Status.Should().Be(Status.HandShake);
         }
     }
 
