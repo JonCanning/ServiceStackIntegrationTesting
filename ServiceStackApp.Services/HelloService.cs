@@ -1,6 +1,7 @@
 using ServiceStack.ServiceInterface;
+using ServiceStackApp.Dtos;
 
-namespace ServiceStackApp
+namespace ServiceStackApp.Services
 {
     public class HelloService : Service
     {

@@ -3,6 +3,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using ServiceStack.Text;
 using ServiceStackApp;
+using ServiceStackApp.Dtos;
 
 namespace IntegrationTests
 {

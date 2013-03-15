@@ -2,7 +2,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using ServiceStack.ServiceClient.Web;
 using ServiceStack.Text;
-using ServiceStackApp;
+using ServiceStackApp.Dtos;
 using System.Net;
 
 namespace IntegrationTests
@@ -35,7 +35,7 @@ namespace IntegrationTests
         public void Then_json_should_contain_Hello_Demis()
         {
             var json = new WebClient().UploadString(SetUpFixture.BasePath + "hello/Demis?format=json", new Hello { Name = "Demis" }.ToJson());
-            json.Should().Contain(@"{""Result"":""Hello, Demis""}");
+            json.Should().Contain(@"""Result"":""Hello, Demis""");
         }
     }
 }

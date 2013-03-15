@@ -12,7 +12,7 @@ namespace IntegrationTests
         [SetUp]
         protected virtual void TestFixtureSetUp()
         {
-            StartServer(Environment.CurrentDirectory + @"..\..\..\..\ServiceStackApp", 8888, "", "");
+            StartServer(Environment.CurrentDirectory + @"..\..\..\..\ServiceStackApp.Host", 8888, "", "");
         }
 
         [TearDown]

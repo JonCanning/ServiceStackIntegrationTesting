@@ -1,6 +1,6 @@
 using ServiceStack.ServiceInterface.ServiceModel;
 
-namespace ServiceStackApp
+namespace ServiceStackApp.Dtos
 {
     public class HelloResponse : IHasResponseStatus
     {

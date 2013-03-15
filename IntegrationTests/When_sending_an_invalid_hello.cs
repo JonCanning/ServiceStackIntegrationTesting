@@ -1,8 +1,8 @@
-using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
 using ServiceStack.ServiceClient.Web;
-using ServiceStackApp;
+using ServiceStackApp.Dtos;
+using System.Linq;
 
 namespace IntegrationTests
 {

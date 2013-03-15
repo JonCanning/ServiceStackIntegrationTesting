@@ -1,8 +1,8 @@
-using System.Net;
 using FluentAssertions;
 using NUnit.Framework;
 using ServiceStack.Text;
-using ServiceStackApp;
+using ServiceStackApp.Dtos;
+using System.Net;
 
 namespace IntegrationTests
 {

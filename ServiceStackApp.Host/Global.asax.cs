@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace ServiceStackApp
+namespace ServiceStackApp.Host
 {
     public class Global : System.Web.HttpApplication
     {
         //Initialize your application singleton
         protected void Application_Start(object sender, EventArgs e)
         {
-            new HelloAppHost().Init();
+            new AppHost().Init();
         }
     }
 }

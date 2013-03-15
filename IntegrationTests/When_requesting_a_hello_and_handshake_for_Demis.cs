@@ -1,7 +1,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 using ServiceStack.ServiceClient.Web;
-using ServiceStackApp;
+using ServiceStackApp.Dtos;
 
 namespace IntegrationTests
 {
@@ -14,7 +14,7 @@ namespace IntegrationTests
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            response = jsonServiceClient.Post<HelloResponse>("hello/Demis", new Hello{Status = Status.HandShake});
+            response = jsonServiceClient.Post<HelloResponse>("hello/Demis", new Hello { Status = Status.HandShake });
         }
 
         [Test]
